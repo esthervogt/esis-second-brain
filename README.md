@@ -7,7 +7,7 @@ Documentation on Accessing the Notion API with Python: https://prettystatic.com/
 1. Create Integration
 2. Give Integration edit rights for Notion Database
 
-## zotero
+## Zotero
 
 ### Sync Zotero annotations to Readwise
 
@@ -26,4 +26,6 @@ Steps to take:
 - get your personal library ID (=user id) which is displayed above the table with API keys ("Your userID for use in API calls is xxxxxxx") and save it to local .env file as ZOTERO_USER_ID: https://www.zotero.org/settings/keys
 - the script for running the export of annotations from Zotero to Readwise can be found in sync_zotero_annotations_to_readwise.py
   - specify whether you want to export highlights and/or notes
+- Add the variables ZOTERO2READWISE_ACCESS_TOKEN, ZOTERO2READWISE_ACCESS_TOKEN, ZOTERO_USER_ID to your Github Actions Secrets
+  - alternatives for syncing variables in .env: https://stackoverflow.com/questions/60176044/how-do-i-use-an-env-file-with-github-actions
 - set up scheduling, i.e. using Github Actions
