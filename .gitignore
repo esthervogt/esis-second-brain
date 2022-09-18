@@ -1,0 +1,6 @@
+/venv/
+/.env
+
+/failed_items
+
+db.json
