@@ -1,0 +1,25 @@
+name: Habit to Habit Tracker Automation
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: "0 3 * * *" # Runs at 03:00 AM (UTC) every day (Check https://crontab.guru/)
+
+jobs:
+  habit-to-habit-tracker-automation:
+    runs-on: windows-latest
+    steps:
+      - name: 🍽️ Checkout the repo
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+
+      - name: 🐍 Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: 🚀 Run Automation
+        run: python notion/add_habit_to_tracker.py ${{ secrets.DB_ID_HABITS }} ${{ secrets.DB_ID_HABIT_TRACKER }}
