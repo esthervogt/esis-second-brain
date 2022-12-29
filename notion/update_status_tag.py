@@ -10,7 +10,7 @@ import requests
 load_dotenv()
 databaseId = os.getenv('DB_ID_ACTION_ITEMS')
 
-db = u.readDatabase(databaseId)
+db = u.read_database(databaseId)
 db_df = pd.json_normalize(db, record_path=['results'])
 
 page_ids_to_update = list(db_df.loc[(db_df['properties.Do Date.date.start'] == date.today().strftime('%Y-%m-%d')) &
@@ -18,7 +18,7 @@ page_ids_to_update = list(db_df.loc[(db_df['properties.Do Date.date.start'] == d
 for page_id in page_ids_to_update[:1]:
     update_data = pd.DataFrame([{'properties.Tags.status.name':'To Do'}])
     update_data_json = u.df_to_formatted_json(update_data)[0]
-    u.updatePage(page_id, update_data_json)
+    u.update_page(page_id, update_data_json)
 
 # there seems to be some error with the formatting of the payload
 # maybe check this page for reference: https://medium.com/@pratikdeshmukhlobhi2004/notion-api-with-python-916024cb9138

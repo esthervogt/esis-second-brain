@@ -13,10 +13,26 @@ HEADERS = {
 }
 
 
-def readDatabase(databaseId):
+def read_database(databaseId: str):
     readUrl = f"https://api.notion.com/v1/databases/{databaseId}/query"
     res = requests.request("POST", readUrl, headers=HEADERS)
     return res.json()
+
+
+def update_database(databaseId: str, properties: json):
+    updateUrl = f"https://api.notion.com/v1/databases/{databaseId}"
+    res = requests.request(method="PATCH", url=updateUrl, headers=HEADERS, json={'properties': properties})
+    return res.status_code
+
+
+def read_page(pageId: str):
+    readUrl = f"https://api.notion.com/v1/pages/{pageId}"
+    res = requests.request("GET", readUrl, headers=HEADERS)
+    return res.json()
+
+
+def get_page_title(page_dict: dict):
+    return page_dict['properties']['Name']['title'][0]['plain_text']
 
 
 def persist_db_as_json(db):
@@ -24,7 +40,7 @@ def persist_db_as_json(db):
         json.dump(db, f, ensure_ascii=False)
 
 
-def createPage(databaseId):
+def create_page(databaseId):
     createUrl = 'https://api.notion.com/v1/pages'
 
     newPageData = {
@@ -69,7 +85,7 @@ def createPage(databaseId):
     print(res.text)
 
 
-def updatePage(pageId, updateData):
+def update_page(pageId, updateData):
     updateUrl = f"https://api.notion.com/v1/pages/{pageId}"
     data = json.dumps(updateData)
     response = requests.request("PATCH", updateUrl, headers=HEADERS, data=data)
