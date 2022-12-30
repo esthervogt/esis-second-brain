@@ -3,7 +3,7 @@ name: Habit to Habit Tracker Automation
 on:
   push:
     branches:
-      - master
+      - main
   schedule:
     - cron: "0 3 * * *" # Runs at 03:00 AM (UTC) every day (Check https://crontab.guru/)
 
@@ -20,6 +20,9 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.8'
+
+      - name: 💿 Install Python packages
+        run: pip install pandas os dotenv
 
       - name: 🚀 Run Automation
         run: python notion/add_habit_to_tracker.py ${{ secrets.DB_ID_HABITS }} ${{ secrets.DB_ID_HABIT_TRACKER }}
