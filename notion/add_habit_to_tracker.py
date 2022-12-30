@@ -4,11 +4,10 @@ import os
 sys.path.append(os.getcwd())
 import pandas as pd
 from dotenv import load_dotenv
+load_dotenv()
 import notion.utils as u
 
 if __name__ == "__main__":
-
-    load_dotenv()
 
     # TODO: support deletion of properties
 
