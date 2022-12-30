@@ -1,6 +1,9 @@
+import sys
+import os
+
+sys.path.append(os.getcwd())
 import pandas as pd
 import notion.utils as u
-import os
 from dotenv import load_dotenv
 
 if __name__ == "__main__":
