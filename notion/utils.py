@@ -7,7 +7,7 @@ load_dotenv()
 
 HEADERS = {
     "Accept": "application/json",
-    "Authorization": "Bearer " + os.getenv('NOTION_INTEGRATION_TOKEN'),
+    "Authorization": "Bearer " + os.environ['NOTION_INTEGRATION_TOKEN'],
     "Content-Type": "application/json",
     "Notion-Version": "2021-05-13"
 }

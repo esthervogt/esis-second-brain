@@ -22,7 +22,11 @@ jobs:
           python-version: '3.8'
 
       - name: 💿 Install Python packages
+        env:
+          NOTION_INTEGRATION_TOKEN: ${{ secrets.NOTION_INTEGRATION_TOKEN }}
+          DB_ID_HABITS: ${{ secrets.DB_ID_HABITS }}
+          DB_ID_HABIT_TRACKER: ${{ secrets.DB_ID_HABIT_TRACKER }}
         run: pip install pandas python-dotenv requests
 
       - name: 🚀 Run Automation
-        run: python notion/add_habit_to_tracker.py ${{ secrets.DB_ID_HABITS }} ${{ secrets.DB_ID_HABIT_TRACKER }} ${{ secrets.NOTION_INTEGRATION_TOKEN }}
+        run: python notion/add_habit_to_tracker.py
