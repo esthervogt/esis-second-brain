@@ -25,4 +25,4 @@ jobs:
         run: pip install pandas os dotenv
 
       - name: 🚀 Run Automation
-        run: python notion/add_habit_to_tracker.py ${{ secrets.DB_ID_HABITS }} ${{ secrets.DB_ID_HABIT_TRACKER }}
+        run: python notion/add_habit_to_tracker.py ${{ secrets.DB_ID_HABITS }} ${{ secrets.DB_ID_HABIT_TRACKER }} ${{ secrets.NOTION_INTEGRATION_TOKEN }}
